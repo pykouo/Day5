@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TypeMachine</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style>
+		*{
+			font-family: sans-serif;
+		}
+		body{
+			background-color: #F5F5F5;
+		}
+		.title{
+			display: block;
+			width: 80%;
+			margin: 40px auto;
+			text-align: center;
+			font-size: 30px;
+		}
+		input:focus{
+			outline: none;
+		}
+		input{
+			width: 80%;
+			display: block;
+			margin:  0 auto;
+			font-size: 20px;
+			line-height: 40px;
+			border: none;
+			padding: 0 10px;
+		}
+		.submit{
+			clear: both;
+			width: 20%;
+			background-color: #323232;
+			margin: 50px auto;
+			font-size: 20px;
+			color: white;
+			line-height: 40px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.submit:hover{
+			background-color: #8A8A8A;
+			transition: all linear 0.15s;
+		}
+		.warn_msg{
+			display: block;
+			clear:  both;
+			width: 80%;
+			margin: 20px auto;
+			color: red;
+		}
+		.type_canvas{
+			width: 60%;
+			margin: 50px auto;
+			font-size: 40px;
+			font-family: cursive;
+			word-wrap: break-word;
+		}
+	</style>
+	<script>
+		$(function(){
+			
+		});
+		function type(){
+			var input = $('#type').val();
+			$('.type_canvas').html('');
+			if(input == ''){
+				$('.warn_msg').html('You didnt enter anything here :(');
+			}else{
+				$('.warn_msg').html('');
+				var input_array = Array.from(input);
+				var input_len = input_array.length;
+				print(input_array,input_len,0);
+			}
+		}
+		function print(a,l,i){
+			setTimeout(function(){
+				if(i<l){
+					$('.type_canvas').append(a[i]);
+				}
+				i++;
+				print(a,l,i);
+			},100)
+		}
+	</script>
+</head>
+<body>
+
+	<span class="title">Please Enter Random Words And they will Appear Like A Typemachine :)</span>
+	<span class="warn_msg"></span>
+	<input type="text" name="typemachine_input" placeholder="please text some words here" id="type">
+	<div class="submit" onclick="type()">Submit</div>
+
+	<div class="type_canvas"></div>
+
+</body>
+</html>
