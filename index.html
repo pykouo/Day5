@@ -71,25 +71,28 @@
 				$('.warn_msg').html('You didnt enter anything here :(');
 			}else{
 				$('.warn_msg').html('');
+				$('#type').val('');
 				var input_array = Array.from(input);
 				var input_len = input_array.length;
 				print(input_array,input_len,0);
 			}
 		}
 		function print(a,l,i){
+
 			setTimeout(function(){
 				if(i<l){
 					$('.type_canvas').append(a[i]);
 				}
 				i++;
 				print(a,l,i);
-			},100)
+			},Math.random()*200+50)
 		}
 	</script>
 </head>
 <body>
 
-	<span class="title">Please Enter Random Words And they will Appear Like A Typemachine :)</span>
+	<span class="title">Please Enter Random Words And they will Appear Like A Typemachine :)<span>and the speed is random</span></span>
+
 	<span class="warn_msg"></span>
 	<input type="text" name="typemachine_input" placeholder="please text some words here" id="type">
 	<div class="submit" onclick="type()">Submit</div>
